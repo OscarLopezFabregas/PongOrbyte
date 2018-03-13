@@ -8,36 +8,36 @@ public class Ball_Controller : MonoBehaviour {
     public float hitAcceleration = 2f;
     public float ballDeviation = 4f;
     public float startingWait = 1f;
-   // public float softBouncesFactor = 1;
+    public float launchSpeed = 8;
+
+    // public float softBouncesFactor = 1;
     Rigidbody rb;
     
-    private float speed = 8;
 	// Use this for initialization
 	void Start ()
     {
-       
         //Get shortcut to rigidbody component
         rb = GetComponent<Rigidbody>();
         StartCoroutine(Pause());
-      
-      
+       
+     
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
- 
 	}
     IEnumerator Pause()
     {
+        //Reset Values
+        transform.position = Vector3.zero;
+        rb.velocity = Vector3.zero;
+
         yield return new WaitForSeconds(startingWait);
-
-
         LaunchBall();
     }
     void LaunchBall()
     {
-        transform.position = Vector3.zero;
         //Ball Chooses a direction
         //Ball Flies that direction
         //Flip a coin, determine direction in x-axis
@@ -50,11 +50,11 @@ public class Ball_Controller : MonoBehaviour {
         //Check results for x Coin
         if (xDirection == 0)
         {
-            launchDirection.x = -speed;
+            launchDirection.x = -launchSpeed;
         }
         if (xDirection == 1)
         {
-            launchDirection.x = speed;
+            launchDirection.x = launchSpeed;
         }
         //Check results for y Coin
         if (yDirection == 0)
@@ -63,18 +63,18 @@ public class Ball_Controller : MonoBehaviour {
         }
         if (yDirection == 1)
         {
-            launchDirection.y = -speed / 2;
+            launchDirection.y = -launchSpeed / 2;
         }
         if (yDirection == 2)
         {
-            launchDirection.y = speed / 2;
+            launchDirection.y = launchSpeed / 2;
         }
+        // rb.velocity.Set(launchDirection.x, launchDirection.y, 0);
         rb.velocity = launchDirection;
     }
 
-
     // When we hit something else...
-    void OnCollisionEnter(Collision hit)
+    void OnCollisionExit(Collision hit)
     {
         float ballBatDistance = (transform.position.y 
             - hit.gameObject.transform.position.y) * ballDeviation;
@@ -110,13 +110,15 @@ public class Ball_Controller : MonoBehaviour {
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerExit(Collider other)
     {
         if(other.gameObject.tag == "Goal")
         {
-            Debug.Log("Gol!!");
+         
             //TODO: before destroy play GOL animation
-            Destroy(gameObject);
+       
+            StartCoroutine(Pause());
+            
         }
     }
 
