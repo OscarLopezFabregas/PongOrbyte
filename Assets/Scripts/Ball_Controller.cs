@@ -37,6 +37,7 @@ public class Ball_Controller : MonoBehaviour {
     }
     void LaunchBall()
     {
+        transform.position = Vector3.zero;
         //Ball Chooses a direction
         //Ball Flies that direction
         //Flip a coin, determine direction in x-axis
