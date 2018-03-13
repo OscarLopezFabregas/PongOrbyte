@@ -72,9 +72,6 @@ public class Ball_Controller : MonoBehaviour {
     }
 
 
-
-
-
     // When we hit something else...
     void OnCollisionEnter(Collision hit)
     {
@@ -105,11 +102,21 @@ public class Ball_Controller : MonoBehaviour {
             rb.velocity = new Vector3(rb.velocity.x - hitAcceleration, rb.velocity.y + ballBatDistance);
         }
 
-        //Idea, to refine collision with boundaries, to make the game easier.
+        //TODO: "Soften the bounces" Idea, to refine collision with boundaries, to make the game easier. 
         //    if (hit.gameObject.name == "TopBoundaries")
         // rb.velocity = new Vector3(rb.velocity.x - hitAcceleration, rb.velocity.y - softBouncesFactor);
         //etc...
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Goal")
+        {
+            Debug.Log("Gol!!");
+            //TODO: before destroy play GOL animation
+            Destroy(gameObject);
+        }
     }
 
 }
