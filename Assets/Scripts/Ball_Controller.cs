@@ -116,7 +116,7 @@ public class Ball_Controller : MonoBehaviour {
         {
          
             //TODO: before destroy play GOL animation
-            Scoreboard_Controller.instance.GivePlayerTwoAPoint();
+            Scoreboard_Controller.instance.GivePlayerOneAPoint();
             StartCoroutine(Pause());
             
         }
@@ -125,7 +125,7 @@ public class Ball_Controller : MonoBehaviour {
         {
 
             //TODO: before destroy play GOL animation
-            Scoreboard_Controller.instance.GivePlayerOneAPoint();
+            Scoreboard_Controller.instance.GivePlayerTwoAPoint();
             StartCoroutine(Pause());
 
         }
