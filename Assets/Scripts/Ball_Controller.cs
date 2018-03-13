@@ -112,13 +112,22 @@ public class Ball_Controller : MonoBehaviour {
 
     void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.tag == "Goal")
+        if(other.gameObject.name == "Right_Goal")
         {
          
             //TODO: before destroy play GOL animation
-       
+            Scoreboard_Controller.instance.GivePlayerTwoAPoint();
             StartCoroutine(Pause());
             
+        }
+
+        if (other.gameObject.name == "Left_Goal")
+        {
+
+            //TODO: before destroy play GOL animation
+            Scoreboard_Controller.instance.GivePlayerOneAPoint();
+            StartCoroutine(Pause());
+
         }
     }
 
