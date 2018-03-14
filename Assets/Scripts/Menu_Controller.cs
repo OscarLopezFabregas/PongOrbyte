@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
+
 
 public class Menu_Controller : MonoBehaviour {
 
@@ -18,6 +20,13 @@ public class Menu_Controller : MonoBehaviour {
 
     public void StartGame()
     {
-
+        SceneManager.LoadScene(1);
+    }
+    
+    
+    //only works in .exe
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
