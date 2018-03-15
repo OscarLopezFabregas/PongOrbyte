@@ -13,6 +13,9 @@ public class Player_Input_Controller : MonoBehaviour
     public float speed = 8f;
     public float leftBatSize = 3.4f;
     public float rightBatSize = 3.4f;
+
+   
+
 	// Use this for initialization
 	void Start ()
     {
@@ -22,6 +25,10 @@ public class Player_Input_Controller : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        //Defintions
+       
+
+
         //Default speed of the bat to zero on every frame
         leftBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
         if (Input.GetKey (KeyCode.W))
@@ -53,8 +60,40 @@ public class Player_Input_Controller : MonoBehaviour
 
         }
 
-        //Gameplay-Feature Modify Bats Size
+        foreach (Touch touch in Input.touches)
+        {
+            if(touch.position.x > 1000)
+            {
+              if(touch.position.y > 400)
+                {
+                    rightBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, speed, 0f);
+                }
+              else if (touch.position.y < 400)
+                {
+                    rightBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, -speed, 0f);
+                }
+            }
 
+
+            if (touch.position.x < 1000)
+            {
+                if (touch.position.y > 400)
+                {
+                    leftBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, speed, 0f);
+                }
+                else if (touch.position.y < 400)
+                {
+                    leftBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, -speed, 0f);
+                }
+            }
+
+
+
+        }
+
+
+
+        //Gameplay-Feature Modify Bats Size
         modifyLeftBatSize();
         modifyRightBatSize();
 
