@@ -15,14 +15,14 @@ public class Menu_Controller : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-     
+      //  AdManager.Instance.ShowBanner();
 
 		
 	}
 
     public void StartGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
     
     
