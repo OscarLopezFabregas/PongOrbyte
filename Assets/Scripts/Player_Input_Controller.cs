@@ -87,9 +87,7 @@ public class Player_Input_Controller : MonoBehaviour
 
 
 
-        //Gameplay-Feature Modify Bats Size
-        modifyLeftBatSize();
-        modifyRightBatSize();
+     
 
     }
 
