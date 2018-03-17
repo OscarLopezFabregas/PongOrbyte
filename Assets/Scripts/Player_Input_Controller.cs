@@ -19,15 +19,14 @@ public class Player_Input_Controller : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-		
+      
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        //Defintions
-       
-
+        float nRightBatPos = rightBat.transform.position.y / 5.9f;
+        float nLeftBatPos = leftBat.transform.position.y / 5.9f;
 
         //Default speed of the bat to zero on every frame
         leftBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
@@ -43,10 +42,8 @@ public class Player_Input_Controller : MonoBehaviour
             leftBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, -speed, 0f);
 
         }
-
         //Default speed of the bat to zero on every frame
         rightBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
-
         if (Input.GetKey(KeyCode.UpArrow))
         {
             //Set the velocity to go up 1
@@ -59,32 +56,29 @@ public class Player_Input_Controller : MonoBehaviour
             rightBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, -speed, 0f);
 
         }
-
         foreach (Touch touch in Input.touches)
         {
-            if(touch.position.x > 1000)
+            float nTouchPosition = (touch.position.y - (1080/2)) / (1080 / 2);
+            
+            if(touch.position.x > 1920/2)
             {
-              if(touch.position.y > 400)
-                {
+                float distance = nTouchPosition - nRightBatPos;
+            
+                if (distance > 0)
                     rightBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, speed, 0f);
-                }
-              else if (touch.position.y < 400)
-                {
+                else if (distance < 0)
                     rightBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, -speed, 0f);
-                }
+                      
             }
 
 
-            if (touch.position.x < 1000)
+            if (touch.position.x < 1920/2)
             {
-                if (touch.position.y > 400)
-                {
+                float distance = nTouchPosition - nLeftBatPos;
+                if (distance > 0)
                     leftBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, speed, 0f);
-                }
-                else if (touch.position.y < 400)
-                {
+                else if (distance < 0)
                     leftBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, -speed, 0f);
-                }
             }
 
 
