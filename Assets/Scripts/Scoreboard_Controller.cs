@@ -36,7 +36,7 @@ public class Scoreboard_Controller : MonoBehaviour {
 
         if(playerOneScore>= victoryCondition)
         {
-           SceneManager.LoadScene(3);
+           SceneManager.LoadScene(2);
         }
     }
    public void GivePlayerTwoAPoint()
@@ -46,7 +46,7 @@ public class Scoreboard_Controller : MonoBehaviour {
 
         if (playerTwoScore >= victoryCondition)
         {
-            SceneManager.LoadScene(4);
+            SceneManager.LoadScene(3);
         }
 
     }

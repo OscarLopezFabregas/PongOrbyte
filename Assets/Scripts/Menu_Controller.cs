@@ -22,7 +22,7 @@ public class Menu_Controller : MonoBehaviour {
 
     public void StartGame()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
     
     
