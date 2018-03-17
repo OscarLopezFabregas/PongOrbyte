@@ -30,32 +30,32 @@ public class Player_Input_Controller : MonoBehaviour
 
         //Default speed of the bat to zero on every frame
         leftBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
-        if (Input.GetKey (KeyCode.W))
-        {
-            //Set the velocity to go up 1
-            leftBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, speed, 0f);
+        //if (Input.GetKey (KeyCode.W))
+        //{
+        //    //Set the velocity to go up 1
+        //    leftBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, speed, 0f);
 
-        }
-        else if (Input.GetKey(KeyCode.S))
-        {
-            //Set the speed to go down 1
-            leftBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, -speed, 0f);
+        //}
+        //else if (Input.GetKey(KeyCode.S))
+        //{
+        //    //Set the speed to go down 1
+        //    leftBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, -speed, 0f);
 
-        }
+        //}
         //Default speed of the bat to zero on every frame
         rightBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
-        if (Input.GetKey(KeyCode.UpArrow))
-        {
-            //Set the velocity to go up 1
-            rightBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, speed, 0f);
+        //if (Input.GetKey(KeyCode.UpArrow))
+        //{
+        //    //Set the velocity to go up 1
+        //    rightBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, speed, 0f);
 
-        }
-        else if (Input.GetKey(KeyCode.DownArrow))
-        {
-            //Set the speed to go down 1
-            rightBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, -speed, 0f);
+        //}
+        //else if (Input.GetKey(KeyCode.DownArrow))
+        //{
+        //    //Set the speed to go down 1
+        //    rightBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, -speed, 0f);
 
-        }
+        //}
         foreach (Touch touch in Input.touches)
         {
             float nTouchPosition = (touch.position.y - (1080/2)) / (1080 / 2);
@@ -64,9 +64,9 @@ public class Player_Input_Controller : MonoBehaviour
             {
                 float distance = nTouchPosition - nRightBatPos;
             
-                if (distance > 0)
+                if (distance > 0.05)
                     rightBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, speed, 0f);
-                else if (distance < 0)
+                else if (distance < -0.05)
                     rightBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, -speed, 0f);
                       
             }
@@ -75,9 +75,9 @@ public class Player_Input_Controller : MonoBehaviour
             if (touch.position.x < 1920/2)
             {
                 float distance = nTouchPosition - nLeftBatPos;
-                if (distance > 0)
+                if (distance > 0.05)
                     leftBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, speed, 0f);
-                else if (distance < 0)
+                else if (distance < -0.05)
                     leftBat.GetComponent<Rigidbody>().velocity = new Vector3(0f, -speed, 0f);
             }
 
