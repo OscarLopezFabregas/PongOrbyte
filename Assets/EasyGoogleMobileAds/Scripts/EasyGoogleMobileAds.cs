@@ -75,6 +75,11 @@ public class EasyGoogleMobileAds : MonoBehaviour {
 
         // Load the banner with the request.
         bannerView.LoadAd(getAdRequest());
+
+        if (bannerView == null)
+        {
+            Debug.Log("banner View empty!");
+        }
 	}
 	
 	void OnDisable(){
@@ -98,6 +103,11 @@ public class EasyGoogleMobileAds : MonoBehaviour {
 		// Creating the request builder
 		AdRequest.Builder requestBuilder = new AdRequest.Builder();
 		
+        if (requestBuilder == null)
+        {
+            Debug.Log("requestBuilder null!!!");
+
+        }
 		// Test devices
 		if(useEmulatorAsATestDevice){
 			requestBuilder.AddTestDevice(AdRequest.TestDeviceSimulator);
