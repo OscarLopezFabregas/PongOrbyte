@@ -26,6 +26,7 @@ public class Ball_Controller : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        ResetBall();
 	}
     IEnumerator Pause()
     {
@@ -35,6 +36,7 @@ public class Ball_Controller : MonoBehaviour {
 
         yield return new WaitForSeconds(startingWait);
         LaunchBall();
+
     }
     void LaunchBall()
     {
@@ -131,4 +133,16 @@ public class Ball_Controller : MonoBehaviour {
         }
     }
 
+    private void ResetBall()
+    {
+       if(transform.position.y > 14)
+        {
+            StartCoroutine(Pause());
+        }
+
+        if (transform.position.y < -14)
+        {
+            StartCoroutine(Pause());
+        }
+    }
 }
