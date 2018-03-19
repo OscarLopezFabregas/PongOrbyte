@@ -12,12 +12,15 @@ public class Ball_Controller : MonoBehaviour {
 
     // public float softBouncesFactor = 1;
     Rigidbody rb;
-    
+    TrailRenderer tr;
 	// Use this for initialization
 	void Start ()
     {
         //Get shortcut to rigidbody component
         rb = GetComponent<Rigidbody>();
+        tr = GetComponent<TrailRenderer>();
+        tr.enabled = false;
+
         StartCoroutine(Pause());
        
      
@@ -40,6 +43,7 @@ public class Ball_Controller : MonoBehaviour {
     }
     void LaunchBall()
     {
+        tr.enabled = true;
         //Ball Chooses a direction
         //Ball Flies that direction
         //Flip a coin, determine direction in x-axis
@@ -116,7 +120,7 @@ public class Ball_Controller : MonoBehaviour {
     {
         if(other.gameObject.name == "Right_Goal")
         {
-         
+            tr.enabled = false;
             //TODO: before destroy play GOL animation
             Scoreboard_Controller.instance.GivePlayerOneAPoint();
             StartCoroutine(Pause());
@@ -125,7 +129,7 @@ public class Ball_Controller : MonoBehaviour {
 
         if (other.gameObject.name == "Left_Goal")
         {
-
+            tr.enabled = false;
             //TODO: before destroy play GOL animation
             Scoreboard_Controller.instance.GivePlayerTwoAPoint();
             StartCoroutine(Pause());
