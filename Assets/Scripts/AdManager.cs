@@ -4,7 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
+public class AdManager : MonoBehaviour
+{
+    public GameObject ad;
 
-public class AdManager : MonoBehaviour {
+    Intersticial_Controller instance;
 
+    private void Start()
+    {
+       instance = ad.GetComponent<Intersticial_Controller>();
+
+       instance.ShowIntersticial(); 
+    }
 }
