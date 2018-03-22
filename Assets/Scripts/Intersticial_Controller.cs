@@ -14,7 +14,7 @@ public class Intersticial_Controller : MonoBehaviour
         DontDestroyOnLoad(this);
         EasyGoogleMobileAds.GetInterstitialManager()
             .PrepareInterstitial(AddId);
-
+        show = true;
        
     }
     private void Update()
